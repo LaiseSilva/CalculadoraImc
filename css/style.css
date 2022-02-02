@@ -3,6 +3,8 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+/* Váriaveis de cores*/
 :root {
     --primary-color: #ed135a;
     --light-color: #ff5c86;
@@ -51,6 +53,7 @@ form {
     align-items: center;
     width: 100%;
     gap: 10px;
+    margin-bottom: 20px;
 }
 
 button {
@@ -72,10 +75,12 @@ button {
     user-select: none;
 }
 
-.verde {
+
+
+#parabens{
     color: green;
 }
 
-.vermelho {
-    color: red;
+#cuidado{
+color: red;
 }

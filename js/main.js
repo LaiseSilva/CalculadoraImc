@@ -1,35 +1,49 @@
 'use strict'; /* cobra mais do código, diminui as chances de erro*/
 /*console.log(imc); usado para teste*/
 
-function camposValidos() {
+import { iniciarRange } from "./input-range.js";
+
+//Função tradional
+/*function camposValidos() {
     return document.getElementById('formulario').reportValidity()
-}
+}*/
 
-function calcularImc(altura, peso) {
+const camposValidos = () => document.getElementById('formulario').reportValidity(); //arrow function
+
+
+//Função tradional
+/*function calcularImc(altura, peso) {
     return peso / (altura * altura);
-}
+} */
 
-function classificarImc(imc) {
+const calcularImc = (altura,peso) => peso/(altura*altura); //arrow function
+
+
+
+//function classificarImc(imc){}  Função tradicional
+const classificarImc = (imc) => {
+    
     let texto;
     if (imc < 18.5) {
-        texto = " e você está abaixo do peso"
+        texto = 'e você está abaixo do peso' 
     } else if (imc < 25) {
-        texto = " e você está com o peso ideal.Parabéns!"
+        texto = ' e você está com o peso ideal.<span id="parabens">Parabéns!</span>'
     } else if (imc < 30) {
-        texto = " e você está levemente acima do peso"
+        texto = 'e você está levemente acima do peso' 
     } else if (imc < 35) {
-        texto = " e você está com obesidade grau I"
+        texto = 'e você está com obesidade grau I' 
     } else if (imc < 40) {
-        texto = " e você está com obesidade grau II"
+        texto = ' e você está com obesidade grau II'
     } else {
-        texto = " e você está com obesidade grau III.Cuidado!"
+        texto = 'e você está com obesidade grau III.<span id="cuidado">Cuidado!</span>'
+        
     }
      return texto;
 
 }
 
 
-function mostrarResultado() {
+const mostrarResultado = () => {
     const nome = document.getElementById('nome').value;
     const altura = document.getElementById('altura').value;
     const peso = document.getElementById('peso').value;
@@ -40,9 +54,17 @@ function mostrarResultado() {
         const imc = calcularImc(altura, peso);
 
         let texto = classificarImc(imc);
-        resultado.textContent = `${nome} seu IMC é: ${imc.toFixed(2)} ${texto}`;
+        resultado.innerHTML = `${nome} seu IMC é: ${imc.toFixed(2)} ${texto}`;
     } else {
-        resultado.textContent = 'Preencha todos os campos!'
+        resultado.innerHTML = 'Preencha todos os campos!'
     }
-}
+};
+
+
+
     document.getElementById('calcular').addEventListener('click', mostrarResultado);
+
+    iniciarRange('altura'); // inicia a função em relação a altura                                     
+    iniciarRange('peso');
+
+    
